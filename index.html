@@ -1,0 +1,560 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PriceFirst — Instant Local Price Ranges</title>
+  <meta name="description" content="Instant local price ranges for Remodeling, Cleaning, Plumbing, HVAC, and Pet Care in Palm Beach & Broward. No calls. No pressure." />
+  <style>
+    :root{
+      --bg:#070b34;
+      --card:#0f1a52;
+      --muted:#c7d2fe;
+      --text:#ffffff;
+      --accent:#22d3ee;
+      --accent2:#a78bfa;
+      --accent3:#34d399;
+      --shadow: 0 20px 60px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;background:radial-gradient(1200px 700px at 10% -10%, rgba(34,211,238,.35), transparent),radial-gradient(1200px 800px at 90% 0%, rgba(167,139,250,.35), transparent),var(--bg);color:var(--text)}
+    a{color:inherit}
+    .wrap{max-width:1200px;margin:0 auto;padding:24px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px 0 22px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:900}
+    .logo{width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,var(--accent),var(--accent2));box-shadow:var(--shadow)}
+    nav{display:flex;gap:14px;flex-wrap:wrap}
+    nav a{text-decoration:none;font-weight:700;opacity:.9}
+    nav a:hover{opacity:1;text-decoration:underline}
+
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.05));border:1px solid rgba(255,255,255,.18);border-radius:22px;box-shadow:var(--shadow)}
+    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:18px}
+    @media (max-width: 960px){.hero{grid-template-columns:1fr}}
+    @media (max-width: 640px){
+      h1{font-size:34px}
+      .left{padding:22px}
+      .right{padding:16px}
+      .ctaRow{gap:10px}
+      .btn{width:100%;justify-content:center}
+      .tabs{justify-content:center}
+    }
+
+    .left{padding:30px}
+    h1{margin:0 0 12px;font-size:46px;line-height:1.05}
+
+    /* MOBILE FIXES */
+    @media (max-width: 560px){
+      h1{font-size:36px;line-height:1.08}
+      .ctaRow{flex-direction:column}
+      .btn{width:100%;justify-content:center}
+    }
+
+    h2{margin:0 0 10px}
+    h3{margin:0 0 6px}
+    .sub{color:var(--muted);font-size:17px;line-height:1.55;margin:0}
+    .ctaRow{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+    .btn{appearance:none;border:0;border-radius:16px;padding:14px 16px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
+    .btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent3));color:#022c22}
+    .btn.ghost{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);color:var(--text)}
+    .btn:hover{transform:translateY(-1px)}
+
+    .right{padding:20px}
+    .tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+    .tab{padding:10px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.12);cursor:pointer;font-weight:900}
+    .tab.active{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#04111d}
+
+    form{display:grid;gap:10px}
+    .row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    @media (max-width: 560px){.row2{grid-template-columns:1fr}}
+    label{font-size:12px;color:var(--muted);font-weight:900}
+    input, select, textarea{width:100%;padding:12px;border-radius:14px;border:1px solid rgba(255,255,255,.22);background:rgba(0,0,0,.25);color:var(--text)}
+    textarea{min-height:84px}
+
+    .quoteBox{margin-top:12px;padding:16px;border-radius:18px;border:1px solid rgba(255,255,255,.22);background:rgba(0,0,0,.35)}
+    .quoteAmt{font-size:24px;font-weight:900}
+    .fine{color:var(--muted);font-size:13px;line-height:1.5;margin:0}
+
+    section{padding:20px;margin-top:18px}
+    ul{margin:10px 0 0 18px;line-height:1.6}
+
+    .grid3{display:grid;grid-template-columns:repeat(3, 1fr);gap:12px;margin-top:16px}
+    @media (max-width: 960px){.grid3{grid-template-columns:1fr}}
+    .mini{padding:16px}
+    .mini p{margin:0;color:var(--muted);line-height:1.55}
+
+    .trustRow div{font-size:13px}
+    @media (max-width:640px){
+      .trustRow{justify-content:center}
+      .trustRow div{flex:1 1 45%;text-align:center}
+    }
+
+    /* Mobile-friendly trust badges */
+    .badges > div{font-size:14px}
+    @media (max-width: 560px){
+      .badges{gap:8px}
+      .badges > div{padding:10px 12px;font-size:13px}
+    }
+
+    footer{margin-top:28px;padding:18px 0;color:var(--muted);font-size:13px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand"><div class="logo" aria-hidden="true"></div> PriceFirst</div>
+    <nav>
+      <a href="#quote">Get Quote</a>
+      <a href="#how">How it works</a>
+      <a href="#providers">Providers</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <div class="card left">
+      <h1>See the price first.<br/>Then choose your provider.</h1>
+      <p class="sub">Get an instant local price range for <b>Remodeling</b>, <b>Cleaning</b>, <b>Plumbing</b>, <b>HVAC</b>, and <b>Pet Care</b> in Palm Beach & Broward County. No calls. No pressure.</p>
+
+      <div class="ctaRow">
+        <button class="btn primary" type="button" onclick="document.querySelector('#quote').scrollIntoView({behavior:'smooth'})">⚡ Get Instant Quote</button>
+        <button class="btn ghost" type="button" onclick="document.querySelector('#providers').scrollIntoView({behavior:'smooth'})">👷 Become a Provider</button>
+      </div>
+
+      <div class="badges" style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px">
+        <div style="padding:10px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.10);font-weight:900">⏱️ 60-second estimate</div>
+        <div style="padding:10px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.10);font-weight:900">✅ Price-aware clients</div>
+        <div style="padding:10px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.10);font-weight:900">📍 Local matching</div>
+        <div style="padding:10px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.10);font-weight:900">🔒 No bank info</div>
+      </div>
+    </div>
+
+    <div class="card right" id="quote">
+      <div class="tabs" aria-label="Services">
+        <button class="tab active" type="button" data-svc="cleaning">Cleaning</button>
+        <button class="tab" type="button" data-svc="pet">Pet Care</button>
+        <button class="tab" type="button" data-svc="remodel">Remodeling</button>
+        <button class="tab" type="button" data-svc="plumbing">Plumbing</button>
+        <button class="tab" type="button" data-svc="hvac">HVAC</button>
+      </div>
+
+      <form id="quoteForm">
+        <div class="row2">
+          <div>
+            <label for="county">County</label>
+            <select id="county" required>
+              <option value="broward" selected>Broward</option>
+              <option value="palmbeach">Palm Beach</option>
+            </select>
+          </div>
+          <div>
+            <label for="zip">ZIP Code</label>
+            <input id="zip" inputmode="numeric" maxlength="5" placeholder="e.g., 33063" required />
+          </div>
+        </div>
+
+        <div>
+          <label for="svcType">Service type</label>
+          <select id="svcType" required></select>
+        </div>
+
+        <div id="serviceFields"></div>
+
+        <div class="row2">
+          <div>
+            <label for="timeline">When do you need it?</label>
+            <select id="timeline">
+              <option value="flex" selected>Flexible</option>
+              <option value="soon">Within 7 days</option>
+              <option value="asap">ASAP (48–72 hours)</option>
+            </select>
+          </div>
+          <div>
+            <label for="level">Service level</label>
+            <select id="level">
+              <option value="standard" selected>Standard</option>
+              <option value="premium">Premium</option>
+            </select>
+          </div>
+        </div>
+
+        <button class="btn primary" type="button" id="showBtn">Show Price Range</button>
+
+        <div class="quoteBox" id="quoteBox" style="display:none">
+          <div class="quoteAmt" id="quoteAmt">$ —</div>
+          <p class="fine" id="quoteNote">Estimates are market-based ranges. Final pricing depends on scope and site conditions.</p>
+          <div style="margin-top:10px">
+            <button class="btn ghost" type="button" id="matchBtn">Get Matched</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="grid3" id="how">
+    <div class="card mini">
+      <h3>1) Answer a few questions</h3>
+      <p>We estimate based on job size, service type, and local market ranges.</p>
+    </div>
+    <div class="card mini">
+      <h3>2) Get a price range instantly</h3>
+      <p>Transparent ranges help you avoid surprises and avoid wasted calls.</p>
+    </div>
+    <div class="card mini">
+      <h3>3) Get matched with providers</h3>
+      <p>We route your request to providers that match your service and area.</p>
+    </div>
+  </div>
+
+  <section class="card">
+    <h2>How it works</h2>
+    <p class="sub" style="margin-top:8px"><b>PriceFirst</b> gives you an <b>instant estimate range</b> (not a final contract price). Final pricing depends on scope confirmation, condition, access, and material choices.</p>
+    <p class="sub" style="margin-top:10px"><b>Cleaning</b> and <b>Pet Care</b> ranges are tighter and often close to the final price. <b>Remodeling</b>, <b>Plumbing</b>, and <b>HVAC</b> ranges are wider because scope and site conditions can vary.</p>
+    <p class="sub" style="margin-top:10px">Want to be contacted? Tap <b>Get Matched</b>. We share your request with providers who serve your ZIP code.</p>
+  </section>
+
+  <section id="providers" class="card">
+    <h2>Become a Provider</h2>
+    <p class="sub">Get pre-priced, local leads. No monthly fee at launch.</p>
+    <p class="fine" style="margin-top:10px">(MVP note) Provider onboarding and lead delivery can be handled manually at first.</p>
+  </section>
+
+  <section id="contact" class="card">
+    <h2>Contact</h2>
+    <p class="sub">Questions? Want early access? Reach out.</p>
+  </section>
+
+  <footer>
+    <div>© <span id="yr"></span> PriceFirst • Palm Beach & Broward</div>
+    <div>Transparent price ranges</div>
+  </footer>
+</div>
+
+<script>
+  // ===== CONFIG =====
+  // Change this to YOUR email address.
+  // When a user clicks "Get Matched", it will open a pre-filled email to you.
+  const ADMIN_EMAIL = "you@yourdomain.com";
+
+  // ===== UI ELEMENTS =====
+  const svcSelect = document.getElementById('svcType');
+  const fields = document.getElementById('serviceFields');
+  const quoteBox = document.getElementById('quoteBox');
+  const quoteAmt = document.getElementById('quoteAmt');
+  const quoteNote = document.getElementById('quoteNote');
+
+  // ===== MULTIPLIERS (simple MVP) =====
+  const COUNTY_MULT = { broward: 1.00, palmbeach: 1.08 };
+  const LEVEL_MULT = { standard: 1.00, premium: 1.20 };
+  const TIME_MULT  = { flex: 1.00, soon: 1.08, asap: 1.18 };
+
+  // ===== SERVICE LISTS =====
+  const SERVICES = {
+    remodel: ['Interior Painting','Exterior Painting','Windows & Doors','Carpentry','Other'],
+    cleaning: ['Residential','Post Construction','Office','Commercial'],
+    plumbing: ['New Construction / Remodel','Leak Detection','Water Supply System','Drain-Waste-Vent (DWV)','Water Heaters','Other'],
+    hvac: ['Complete System Installation','Ductwork','Duct Cleaning','Service & Repairs','Preventive Maintenance','Indoor Air Quality','Controls & Energy Efficiency','Commercial / Condo Work'],
+    pet: ['Walking','Sitting','Wash & Haircut']
+  };
+
+  let current = 'cleaning';
+
+  function validateZip(v){
+    return /^[0-9]{5}$/.test(String(v||'').trim());
+  }
+
+  function money(n){
+    return n.toLocaleString(undefined,{style:'currency',currency:'USD',maximumFractionDigits:0});
+  }
+
+  function setActiveTab(svc){
+    current = svc;
+    document.querySelectorAll('.tab').forEach(b => b.classList.toggle('active', b.dataset.svc === svc));
+
+    // Fill dropdown
+    svcSelect.innerHTML = SERVICES[svc].map(x => `<option>${x}</option>`).join('');
+
+    // Service-specific questions
+    if(svc==='cleaning'){
+      fields.innerHTML = `
+        <div>
+          <label for="sqft">Home size (sq ft)</label>
+          <input id="sqft" inputmode="numeric" placeholder="e.g., 1200" required />
+        </div>
+        <div>
+          <label for="freq">Frequency</label>
+          <select id="freq">
+            <option value="onetime" selected>One-time</option>
+            <option value="weekly">Weekly</option>
+            <option value="biweekly">Bi-weekly</option>
+            <option value="monthly">Monthly</option>
+          </select>
+        </div>
+        <div>
+          <label for="beds">Bedrooms</label>
+          <select id="beds">
+            <option value="1">1</option>
+            <option value="2" selected>2</option>
+            <option value="3">3</option>
+            <option value="4">4+</option>
+          </select>
+        </div>
+      `;
+    } else if(svc==='pet'){
+      fields.innerHTML = `
+        <div class="row2">
+          <div>
+            <label for="pets">Pets</label>
+            <select id="pets">
+              <option value="1" selected>1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4+</option>
+            </select>
+          </div>
+          <div>
+            <label for="petFreq">How often?</label>
+            <select id="petFreq">
+              <option value="once" selected>One-time</option>
+              <option value="weekly">Weekly</option>
+              <option value="daily">Daily</option>
+            </select>
+          </div>
+        </div>
+      `;
+    } else if(svc==='remodel'){
+      fields.innerHTML = `
+        <div class="row2">
+          <div>
+            <label for="area">Area / size (sq ft)</label>
+            <input id="area" inputmode="numeric" placeholder="e.g., 180" required />
+          </div>
+          <div>
+            <label for="units">Units (rooms/items)</label>
+            <select id="units">
+              <option value="1">1</option>
+              <option value="2" selected>2</option>
+              <option value="3">3</option>
+              <option value="4">4+</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label for="notes">Notes (optional)</label>
+          <textarea id="notes" placeholder="e.g., condo rules, access, materials already purchased..."></textarea>
+        </div>
+      `;
+    } else if(svc==='plumbing'){
+      fields.innerHTML = `
+        <div>
+          <label for="plUnits">How many items?</label>
+          <select id="plUnits">
+            <option value="1" selected>1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4+</option>
+          </select>
+        </div>
+        <div>
+          <label for="notes">Notes (optional)</label>
+          <textarea id="notes" placeholder="e.g., slab leak, shutoff access, water heater size..."></textarea>
+        </div>
+      `;
+    } else if(svc==='hvac'){
+      fields.innerHTML = `
+        <div>
+          <label for="hvUnits">How many units/areas?</label>
+          <select id="hvUnits">
+            <option value="1" selected>1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4+</option>
+          </select>
+        </div>
+        <div>
+          <label for="notes">Notes (optional)</label>
+          <textarea id="notes" placeholder="e.g., tonnage, condo restrictions, existing duct condition..."></textarea>
+        </div>
+      `;
+    }
+
+    quoteBox.style.display = 'none';
+  }
+
+  // Tabs
+  document.querySelectorAll('.tab').forEach(btn => btn.addEventListener('click', () => setActiveTab(btn.dataset.svc)));
+
+  // Simple market-based calculator (MVP)
+  function calcRange(){
+    const county = document.getElementById('county').value;
+    const zip = document.getElementById('zip').value.trim();
+    const timeline = document.getElementById('timeline').value;
+    const level = document.getElementById('level').value;
+
+    if(!validateZip(zip)){
+      alert('Please enter a 5-digit ZIP code.');
+      return null;
+    }
+
+    const mult = COUNTY_MULT[county] * LEVEL_MULT[level] * TIME_MULT[timeline];
+
+    let baseLow = 0;
+    let baseHigh = 0;
+
+    if(current==='cleaning'){
+      const sqft = Number(document.getElementById('sqft').value);
+      if(!sqft || sqft < 200){ alert('Please enter a realistic home size (sq ft).'); return null; }
+      const t = svcSelect.value;
+      const freq = document.getElementById('freq').value;
+      const beds = document.getElementById('beds').value;
+
+      const perSq = {
+        'Residential': 0.14,
+        'Post Construction': 0.24,
+        'Office': 0.12,
+        'Commercial': 0.13
+      }[t] || 0.14;
+
+      const min = {
+        'Residential': 140,
+        'Post Construction': 260,
+        'Office': 180,
+        'Commercial': 220
+      }[t] || 140;
+
+      let base = Math.max(min, sqft * perSq);
+      const freqMult = { onetime:1.00, weekly:0.85, biweekly:0.92, monthly:0.97 }[freq] || 1.0;
+      const bedMult = { '1':1.00, '2':1.05, '3':1.12, '4':1.20 }[beds] || 1.0;
+
+      base *= freqMult * bedMult * mult;
+      baseLow = base * 0.90;
+      baseHigh = base * 1.15;
+
+    } else if(current==='pet'){
+      const svc = svcSelect.value;
+      const pets = Number(document.getElementById('pets').value);
+      const petFreq = document.getElementById('petFreq').value;
+
+      const baseMap = { 'Walking': 28, 'Sitting': 70, 'Wash & Haircut': 85 };
+      let base = baseMap[svc] || 30;
+      const petsMult = {1:1.0,2:1.25,3:1.45,4:1.65}[pets] || 1.0;
+      const freqMult = { once:1.0, weekly:0.98, daily:0.95 }[petFreq] || 1.0;
+
+      base *= petsMult * freqMult * mult;
+      baseLow = base * 0.92;
+      baseHigh = base * 1.10;
+
+    } else if(current==='remodel'){
+      const area = Number(document.getElementById('area').value);
+      const units = Number(document.getElementById('units').value);
+      if(!area || area < 20){ alert('Please enter a realistic area/size.'); return null; }
+
+      const trade = svcSelect.value;
+      let base = 0;
+      if(trade==='Interior Painting') base = 900 + area * 1.80;
+      else if(trade==='Windows & Doors') base = 1200 + units * 550;
+      else if(trade==='Carpentry') base = 800 + units * 450;
+      else base = 1000 + units * 600;
+
+      base *= mult;
+      baseLow = base * 0.78;
+      baseHigh = base * 1.38;
+
+    } else if(current==='plumbing'){
+      const items = Number(document.getElementById('plUnits').value);
+      const svc = svcSelect.value;
+      let base = 0;
+      if(svc==='Leak Detection') base = 250 + items * 140;
+      else if(svc==='Water Heaters') base = 900 + items * 500;
+      else if(svc==='Drain-Waste-Vent (DWV)') base = 850 + items * 350;
+      else if(svc==='Water Supply System') base = 650 + items * 260;
+      else if(svc==='New Construction / Remodel') base = 1500 + items * 700;
+      else base = 300 + items * 220;
+
+      base *= mult;
+      baseLow = base * 0.80;
+      baseHigh = base * 1.35;
+
+    } else if(current==='hvac'){
+      const items = Number(document.getElementById('hvUnits').value);
+      const svc = svcSelect.value;
+      let base = 0;
+      if(svc==='Complete System Installation') base = 4500 + items * 900;
+      else if(svc==='Ductwork') base = 1200 + items * 450;
+      else if(svc==='Duct Cleaning') base = 350 + items * 140;
+      else if(svc==='Service & Repairs') base = 220 + items * 170;
+      else if(svc==='Preventive Maintenance') base = 180 + items * 95;
+      else if(svc==='Indoor Air Quality') base = 250 + items * 200;
+      else if(svc==='Controls & Energy Efficiency') base = 350 + items * 240;
+      else base = 1200 + items * 650;
+
+      base *= mult;
+      baseLow = base * 0.82;
+      baseHigh = base * 1.40;
+    }
+
+    // nice rounding
+    const nice = (x) => Math.round(x/10)*10;
+    return {
+      low: nice(baseLow),
+      high: nice(baseHigh),
+      county,
+      zip,
+      timeline,
+      level,
+      service: current,
+      subtype: svcSelect.value
+    };
+  }
+
+  document.getElementById('showBtn').addEventListener('click', () => {
+    const r = calcRange();
+    if(!r) return;
+    quoteAmt.textContent = `${money(r.low)} – ${money(r.high)}`;
+    quoteNote.textContent = 'Estimates are market-based ranges. Final pricing depends on scope, access, materials, and site conditions.';
+    window.__lastQuote = r;
+    quoteBox.style.display = 'block';
+  });
+
+  document.getElementById('matchBtn').addEventListener('click', () => {
+    const q = window.__lastQuote;
+    if(!q){ alert('Click “Show Price Range” first.'); return; }
+
+    // NOTE: This MVP uses mailto:. If you want leads to save into a spreadsheet automatically,
+    // tell me and we'll switch to a simple Google Form / Sheet (still cheap).
+    const name = prompt('Your name:');
+    if(!name) return;
+    const phone = prompt('Best phone number:');
+    if(!phone) return;
+    const email = prompt('Email (optional):') || '';
+
+    const subject = encodeURIComponent(`NEW LEAD — ${q.service.toUpperCase()} — ${q.county} — ${q.zip}`);
+    const body = encodeURIComponent(
+      `Lead details\n`+
+      `Name: ${name}\nPhone: ${phone}\nEmail: ${email}\n\n`+
+      `County: ${q.county}\nZIP: ${q.zip}\n`+
+      `Service: ${q.service}\nType: ${q.subtype}\n`+
+      `Timeline: ${q.timeline}\nLevel: ${q.level}\n\n`+
+      `Estimated Range: ${money(q.low)} – ${money(q.high)}\n`
+    );
+
+    window.location.href = `mailto:${ADMIN_EMAIL}?subject=${subject}&body=${body}`;
+  });
+
+  // Init
+  setActiveTab('cleaning');
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // ===== Tiny self-tests (open DevTools Console to see results) =====
+  // These don't affect users; they just help catch broken IDs.
+  (function runTests(){
+    const mustExist = ['quoteForm','showBtn','matchBtn','svcType','serviceFields','county','zip'];
+    const missing = mustExist.filter(id => !document.getElementById(id));
+    if(missing.length){
+      console.error('[PriceFirst tests] Missing elements:', missing);
+    } else {
+      console.log('[PriceFirst tests] OK');
+    }
+  })();
+</script>
+</body>
+</html>
